@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+
+{% block orxan %}
+
+
+
+            <h3>Sizinlə Paylaşılan Tapşırıqlar</h3>
+<hr>
+<p>
+Xos geldiniz , <small>{{request.user.username}}</small>
+<hr>
+
+
+{% if todo_list %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Basliq</th>
+      <th scope="col">Yazici</th>
+      <th scope="col">Yaranma Tarixi</th>
+      <th scope="col">Bitmə Tarixi</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    
+        {% for todo in todo_list %}
+        <tr>
+            <td>{{todo.id}}</td>
+            <td><a href="/detail/{{todo.id}}">{{todo.name}}</a></td>
+            <td>{{todo.author.username}}</td>
+            <td>{{todo.created_date}}</td>
+            <td>{{todo.end_date}}</td>
+            <td><a href="/deleteshare/{{todo.id}}" class = "btn btn-danger">Sil</a></td>
+
+        </tr>
+        {% endfor %}
+    
+  </tbody>
+</table>
+{% else %}
+
+<div class = "alert alert-danger">
+
+Heç bir paylasilma yoxdur
+
+</div>
+
+{% endif %}
+
+
+{% endblock orxan %}

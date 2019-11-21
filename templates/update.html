@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block orxan %}
+<h3>Tapsirigi Deyisdir</h3>
+<hr>
+{% load crispy_forms_tags %}
+
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+
+    <hr> 
+    <form method = "post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+    {{form|crispy}}
+<br> 
+<button type = "submit" class = "btn btn-danger">Deyisdir</button>
+</form>
+<br><br><br><br><br><br><br><br><br>
+  </div>
+</div>
+
+
+
+{% endblock orxan %}

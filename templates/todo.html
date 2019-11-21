@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+
+{% block orxan %}
+
+
+
+            <h3>To Do List</h3>
+<hr>
+<p>
+Xos geldiniz , <small>{{request.user.username}}</small>
+<hr>
+<a class = "btn btn-danger" href="/addtodo">Tapsiriq elave et</a>
+<hr>
+<a class = "btn btn-danger" href="/share">Paylasilan Tapsiriqlar</a>
+<hr>
+
+{% if todo_list %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Basliq</th>
+      <th scope="col">Yazici</th>
+      <th scope="col">Yaranma Tarixi</th>
+      <th scope="col">Bitmə Tarixi</th>
+      <th scope="col">Deyisdir</th>
+      <th scope="col">Sil</th>
+      <th scope="col">Paylaş</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+        {% for todo in todo_list %}
+        <tr>
+            <td>{{todo.id}}</td>
+            <td><a href="/detail/{{todo.id}}">{{todo.name}}</a></td>
+            <td>{{todo.author.username}}</td>
+            <td>{{todo.created_date}}</td>
+            <td>{{todo.end_date}}</td>
+            <td><a href="/update/{{todo.id}}" class= "btn btn-danger">Deyisdir</a></td>
+            <td><a href="/delete/{{todo.id}}" class = "btn btn-danger">Sil</a></td>
+            <td><a href="/addshare/{{todo.id}}" class = "btn btn-danger">Paylaş</a></td>
+        </tr>
+        {% endfor %}
+    
+  </tbody>
+</table>
+{% else %}
+
+<div class = "alert alert-danger">
+
+Heç bir tapsiriginiz yoxdur
+
+</div>
+
+{% endif %}
+
+
+{% endblock orxan %}

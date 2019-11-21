@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+
+
+{% block orxan %}
+{% load crispy_forms_tags %}
+
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+  <h3>Qeydiyyat</h3>
+    <hr> 
+    <form method = "post" >
+
+    {% csrf_token %}  
+    {{form|crispy}}
+<br>
+<button type = "submit" class = "btn btn-danger">Qeydiyyat</button>
+<span><b>Hesabiniz varsa burdan <a href ="/user/login/">giris edin </a></b></span>
+
+<br>
+<br> 
+<br>
+<br>
+<br> 
+<br>
+<br>
+<br> 
+<br>
+
+</form>
+  </div>
+</div>
+
+
+
+{% endblock orxan %}
